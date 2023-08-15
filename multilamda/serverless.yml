@@ -1,0 +1,12 @@
+org: sidd34po
+app: multilambda
+service: multilamda
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  function1:
+    handler: index.handler
