@@ -23,36 +23,56 @@ while [ $temp -gt 0 ]; do
 
     temp=$(expr $temp - $number)
 
-    if [ $temp -le 0 ]; then
+    if [ $temp -lt 0 ]; then
         echo "As temp has reached 0 or less than 0"
-        if [ $temp -eq 0 ]; then
-            break
-        else
-            echo "Modifying the number"
-            number=$((number + temp))
-            temp=0
-        fi
+        echo "Modifying the number"
+        number=$((number + temp))
+        temp=0
     fi
 
     lamda_info+=("$name $number")
     echo "Remaining number: $temp"
 done
 
-echo "Provided data"
-for lamda_info in "${lamda_info[@]}"; do
-    echo "$lamda_info"
-done
+# echo "Provided data"
+# for lamda_info in "${lamda_info[@]}"; do
+#     echo "$lamda_info"
+# done
 
 cd ./multilamda
 
-if [ "$(pwd)" = "/path/to/directory" ]; then
-    echo "You are in the specified directory."
-else
-    echo "You are not in the specified directory."
-fi
+echo "we are in directory $(pwd)"
 
 echo "Writing lamda functions in index.js file"
+touch index.js
 
-echo "Writing serverless.yml file"
+for lamda_info in "${lamda_info[@]}"; do
+    trimmed_info=$(echo "$lamda_info" | tr -d '\r\n')  # Remove newline characters
+
+    func_name=$(echo "$trimmed_info" | cut -d ' ' -f 1)
+    count=$(echo "$trimmed_info" | cut -d ' ' -f 2)
+
+
+    echo "$func_name"
+    echo "$count"
+    count=$((count))
+
+    for ((i=1; i<=count; i++)); do
+        echo "module.exports.$func_name$i = async (event) => {" >> index.js
+        echo "  return {" >> index.js
+        echo "    statusCode: 200," >> index.js
+        echo "    body: JSON.stringify(" >> index.js
+        echo "      {" >> index.js
+        echo "        message: \"Hello from $func_name$i\"," >> index.js
+        echo "        input: event," >> index.js
+        echo "      }," >> index.js
+        echo "      null," >> index.js
+        echo "      2" >> index.js
+        echo "    )," >> index.js
+        echo "  };" >> index.js
+        echo "};" >> index.js
+        echo >> index.js
+    done
+done
 
 # sls deploy
