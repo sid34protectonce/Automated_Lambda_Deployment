@@ -6,7 +6,7 @@ Important commands
 
 * chmod +x ./remove.sh
 
-To run the app 
+To run the script
 
 * sudo bash ./deploy.sh
 
