@@ -1,6 +1,6 @@
 org: sidd34po
 app: multilambda
-service: multilamda
+service: multilambda
 frameworkVersion: '3'
 
 provider:
@@ -8,14 +8,105 @@ provider:
   runtime: nodejs18.x
 
 functions:
-  function1:
-    handler: index.function1
+  GET1:
+    handler: index.GET1
     events:
       - http:
-          path: /function1
-
-  function2:
-    handler: index.function2
+          path: /get1
+          method: get
+  GET2:
+    handler: index.GET2
     events:
       - http:
-          path: /function2
+          path: /get2
+          method: get
+  GET3:
+    handler: index.GET3
+    events:
+      - http:
+          path: /get3
+          method: get
+  GET4:
+    handler: index.GET4
+    events:
+      - http:
+          path: /get4
+          method: get
+  GET5:
+    handler: index.GET5
+    events:
+      - http:
+          path: /get5
+          method: get
+  GET6:
+    handler: index.GET6
+    events:
+      - http:
+          path: /get6
+          method: get
+  GET7:
+    handler: index.GET7
+    events:
+      - http:
+          path: /get7
+          method: get
+  GET8:
+    handler: index.GET8
+    events:
+      - http:
+          path: /get8
+          method: get
+  GET9:
+    handler: index.GET9
+    events:
+      - http:
+          path: /get9
+          method: get
+  GET10:
+    handler: index.GET10
+    events:
+      - http:
+          path: /get10
+          method: get
+  GET11:
+    handler: index.GET11
+    events:
+      - http:
+          path: /get11
+          method: get
+  GET12:
+    handler: index.GET12
+    events:
+      - http:
+          path: /get12
+          method: get
+  GET13:
+    handler: index.GET13
+    events:
+      - http:
+          path: /get13
+          method: get
+  GET14:
+    handler: index.GET14
+    events:
+      - http:
+          path: /get14
+          method: get
+  GET15:
+    handler: index.GET15
+    events:
+      - http:
+          path: /get15
+          method: get
+  GET16:
+    handler: index.GET16
+    events:
+      - http:
+          path: /get16
+          method: get
+  GET17:
+    handler: index.GET17
+    events:
+      - http:
+          path: /get17
+          method: get
