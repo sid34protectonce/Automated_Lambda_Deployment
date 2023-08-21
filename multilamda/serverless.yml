@@ -9,4 +9,13 @@ provider:
 
 functions:
   function1:
-    handler: index.handler
+    handler: index.function1
+    events:
+      - http:
+          path: /function1
+
+  function2:
+    handler: index.function2
+    events:
+      - http:
+          path: /function2
